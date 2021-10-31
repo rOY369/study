@@ -1,0 +1,128 @@
+git status
+git add .
+git commit -m "merged with python 3.5"
+git push
+git status
+git checkout -b patch-networkoptimiser
+git status
+ls
+git clone git@github.com:cryptstopher/org-mode-video-basics.git
+cd org-mode-video-basics/
+ls
+cd lisp/
+ls
+git status
+git status
+git checkout testing
+git pull
+git checkout -b patch-dbsynctrigger
+git status
+cd ../
+cd ../../work_docs/
+git status
+git status
+git add . 
+git commit -m "regular commit"
+git push
+grep -r "pg" ./*
+git status
+git pull
+git status
+git add . 
+git commit -m "command_path changed"
+git push
+cd ../dqi-report/
+git statys
+git status
+git status
+git status
+cd ../dejoule-on-kubernetes/
+git pull
+git status
+git checkout master
+git pull
+cd ../kapacitor-alerting/
+git status
+git pull
+git status
+git add . 
+git commit -m "changed token"
+git push
+git status
+git status
+git status
+cd ../
+ls
+cd dqi-report/
+ls
+git status
+cd ../rpi-base-image-creator/
+git status
+git branch
+git checkout   image-creation-with-playbook
+git pull
+git status
+git checkout -b patch-postgresbuildplay
+git status
+git add . 
+git commit -m "copy postgres configs to data directory"
+git push
+    git push --set-upstream origin patch-postgresbuildplay
+cd ../D2RS/
+git status
+git status
+cd ../rpi-base-image-creator/
+git status
+git status
+cd ../D2RS/
+git status
+git status
+git ad . 
+git add .
+git commit -m "updated onstartup, changed config files"
+git push
+cd ../rpi-base-image-creator/
+git status
+git add . 
+git commit -m "change in postgresql conf"
+git push
+cd ../D2RS/
+git status
+git add . 
+git commit -m "restart D2RS service in onstartup"
+git push
+cd ../rpi-base-image-creator/
+git status
+git branch
+git checkout   image-creation-with-playbook
+git pull
+git stash
+git checkout -b patch-rclocal
+git status
+git status
+git add . 
+git commit -m "changed rc .local, added both ds1307 and ds3232 rtc modules"
+git push
+    git push --set-upstream origin patch-rclocal
+git status
+git checkout   image-creation-with-playbook
+git status
+git status
+cd ../controller-provisioning/
+git status
+git pull
+git status
+git checkout patch-remoteitinstall
+git checkout -b patch-remoteitinstall
+git status
+git status
+git add . 
+git commit -m "changed remote it installation and ssh registration"
+git push
+    git push --set-upstream origin patch-remoteitinstall
+cd ../kapacitor-alerting/
+git status
+git status
+git add . 
+git commit -m "added sudo in bash script"
+git push
