@@ -1,0 +1,77 @@
+* Basic
+
+** Key-Bindings
+
+ - [ ] shift-tab : switch view
+ - C-enter : make new section at the same indentation level
+ - M-enter : make new section at the same indentation level before the included content/add new bullet point
+ - M-shift-enter : add new checklist point
+ - M-<arrow_keys> : drag section up or down
+ - shift-M-<arrow_keys> : drag section up or down irrespective of indentation level
+ - C-c C-l : insert link
+ - C-c C-o : open link
+ - C-c C-x C-b or C-c C-c: toggle checklist
+ - C-c C-t : toggle todo mode
+ - shift-<left_right_arrow> : toggle modes/state
+
+** Table
+
+   | Name      | Age | Uses Emacs |
+   | David     |  37 | YES        |
+   | Alexander |     |            |
+
+   - C-c TAB (org-table-toggle-column-width) : shrink or expand
+     current column
+   - C-u C-u C-c (org-table-expand): expand all columns
+   - C-u C-c TAB (org-table-shrink) : shrink all columns
+   - C-c ENT : new line
+
+** Source Blocks
+
+   #+begin_src python
+
+   def a():
+       print("hello")
+   
+   #+end_src
+   
+
+ 
+** GTD
+   
+   - add property to item : C-c C-x p
+   - C-c C-t to toggle sequence todo
+   - C-c C-d add deadline to node
+   - C-c t add tag (NEXT, WAITING, DONE)
+   - C-c C-q to add tag, press TAB to enter new tag
+   - C-c C-a n to create new attachment
+   - Agenda view
+     - C-c a to open agenda view
+     - C-c a S-t to search for keyword
+     - C-c a m to match tags
+       - <tag1> / <tag2> to search for items which have both tags
+     - S-f to switch on follow mode
+     - f to open next week agenda, b to open previous week agenda
+     - d to open day agenda, w to open week agenda
+     - o to focus on agenda view and r to refresh
+     - < on a particular item to list only those items with the same context.
+     - Recurring tasks
+       - +1w next occurence in 1 week. (w=week, d=day, m=month, y=year)
+       - ++1w next occurence on same day of week but definitely in future
+       - .+4w next occurence 4 weeks after the task is marked as done
+   - Editing
+     - DRAWERS start with a line :DRAWERNAME: and end with :END:
+     - customize org-log-into-drawer to LOGBOOK
+     - quick note with C-c C-z, finish note with C-c C-c
+   - Archiving
+     - add #+ARCHIVE: myarchive.org::
+     - archive an entry with C-c C-x C-a
+     - archive a subtree with C-c C-x C-s
+     - search all subtrees under a headline and see which one can be
+       archived with keys C-u C-c C-x C-s
+   - customize org-agenda-files to include all org files for agenda
+   - moving items across org files
+     - customize org-refile-targets to include all org files for
+       potential copy/move
+     - move entries with C-c C-w
+     - copy entries with C-c M-w

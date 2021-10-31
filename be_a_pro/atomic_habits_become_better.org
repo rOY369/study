@@ -1,0 +1,95 @@
+* Notes
+
+  - Tiny changes in our habits can change the trajectory of our lives drastically.
+  - You are your habits.
+  - massive action vs 1% improvement
+    - we expect ourselves to make some quantum leap that will gain
+      others attention.
+    - however it is the tiny improvements that are not noticable at
+      first, that create incredible change.
+    - success is the product of daily habits, not once in a lifetime transformations.
+    - The valley of dissappointment is where most people fail and slip
+      back into their old routines.
+    - The most powerful outcomes of any compounding process are
+      delayed so patience is required.
+  - Forget about goals, focus on systems instead
+    - goal is the result you want to accomplish, systems deal with
+      processes that lead to the results.
+    - convention is that to get success --> set specific realistic goals
+    - goals are good for setting a direction but systems are best for
+      making progress
+  - System of atomic habits
+    - the problem is not that you dont want to change. the problem is
+      that you have the wrong system for change.
+    - what really matters is the daily actions and decisions we take
+  - Three layers of behavior change
+    - changing outcomes
+    - process
+    - changing your identity
+      - what do you believe
+      - your worldviews
+      - what do you think about yourself and others
+  - Most people focus on outcomes. But the best way to change habits
+    is to focus on person you want to become.
+    - The goal is not to learn an instrument. it is to become a musician.
+    - Remind yourself everytime you do a workout, you are an athlete.
+    - every time you write a line of code, you are a pro software dev.
+    - each time you instruct your team, you are a leader.
+  - A habit loop
+    - habit is formed and reinforced by means of continuous feedback loop.
+      - cue --> craving --> response --> reward
+      - checking social media becomes tied to your mind going blank at work.
+  - 4 laws
+    - 1 : make it obvious
+      - first become aware of your habits
+      - make a habit scorecard
+      - time and location are the most common cues
+      - I will [behaviour] at [time] in [location]
+      - habits stacking : after [current habit] i will [new
+        habit]. A chain of habits is more likely to be sustained if
+        it is practiced consistently.
+      - motivation is highly overrated. We are more influenced by
+        our environment than our willpower or motivation. Creating a
+        habit requires you to redesign the space around you. Context
+        is the cue.
+        - stop seeing your environment as a place filled with
+          objects. Imagine it as a place filled with relationships.
+        - try to make separate zones in your house for different
+          activities. One space one use.
+        - One of the practical ways to eliminate a bad habit is to
+          make it invisible. Eliminate it from your environment.
+    - 2 : make it attractive
+      - we are more motivated to act when our dopamine levels rise.
+      - it is the expectation of a rewarding experience that drives us
+        to act
+      - temptation bundling : combine an action we need to do with one
+        we want to do.
+      - group influence
+        - what will others think of me ?
+        - find groups to join where the habit you desire is the norm
+      - underlying motives
+        - your habits are modern day solutions to ancient desires. new
+          versions of old vices. the underlying motives behind human
+          behavior remain the same.
+      - learn to associate hard habits with a positive experience
+        - fitness = health + wellbeing, fitness != fatigue
+      - to break a bad habit : make it unattractive
+    - 3 : make it easy
+      - the more energy required, the less likely it is to happen.
+      - reduce friction with good habits and increase friction with
+        bad habits.
+      - find a simple 2 minute version of your desired habit.
+      - get the routine anchored in place and then slowly build up the
+        difficulty.
+    - 4 : make it satisfying
+      - what is immediately rewarded is repeated. what is immediately
+        punished is avoided.
+      - good to add a little immediate pleasure to the habits that
+        will pay off in the long run.
+      - monitor your progress using visual measures. celebrate little
+        wins.
+      - use a habit tracker.
+      - bad days
+        - don't break the chain of continuity.
+    - Good habits : obvious, attractive, easy, satisfying
+    - Bad habits : invisible, unattractive, difficult, unsatisfying

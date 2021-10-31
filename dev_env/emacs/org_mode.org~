@@ -1,0 +1,33 @@
+* Basic
+
+**  Key-Bindings
+
+ - [ ] shift-tab : switch view
+ - C-enter : make new section at the same indentation level
+ - M-enter : make new section at the same indentation level before the included content/add new bullet point
+ - M-shift-enter : add new checklist point
+ - M-<arrow_keys> : drag section up or down
+ - shift-M-<arrow_keys> : drag section up or down irrespective of indentation level
+ - C-c C-l : insert link
+ - C-c C-o : open link
+ - C-c C-x C-b or C-c C-c: toggle checklist
+ - C-c C-t : toggle todo mode
+ - shift-<left_right_arrow> : toggle modes/state
+
+** Table
+
+   | Name      | Age | Uses Emacs |
+   | David     |  37 | YES        |
+   | Alexander |     |            |
+   
+** TODO Source Blocks
+
+   #+begin_src python
+
+   def a():
+       print("hello")
+   
+   #+end_src
+   
+
+ 

@@ -1,0 +1,11 @@
+* Introduction
+
+  Course Link : [[https://www.educative.io/module/ml-for-software-engineers][Machine Learning For Software Engineers]]
+
+* Data Manipulation With NumPy
+
+
+  #+BEGIN_SRC python
+
+
+  #+END_SRC
