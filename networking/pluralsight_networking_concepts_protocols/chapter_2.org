@@ -1,0 +1,33 @@
+* OSI Model
+
+  - Open Systems Interconnect
+  - Watching youtube video
+    - My system : wireless router through WiFi / LAN : ISP(Modem) :
+      Internet : Youtube Server
+    - Type in https://www.youtube.com
+    - Goes to Youtube server --> pulls up the video
+    - Transfers it to my system
+
+** Physical Layer
+
+   - wireless/wired cables (twister pair cables: non-identical)
+   - modem - internet : CoAx cable
+   - internet : fiber optics / wireless / copper
+   - All of these cables and the protocols that define how those
+     cables are constructed are physical layer
+     protocols. Example : twister pair cabling require a very
+     precise protocol to understand how to construct it, same
+     thing with other types of cables. Even the wireless
+     connections use electronmagnetic spectrum to transfer
+     information.
+
+** Data Link Layer
+
+   - Protocols required to move information from one end of the cable
+     to another end of the cable. So we end up having mini-network
+     segments (marked as blue in the following picture)
+   - A network segment is a collection of network devices that operate
+     in the same space in the same protocol.
+   - In each of the network segments in the picture, a specific
+     protocol is used to manage and transfer the data.
+     [[file:pictures/network_segment.png]]

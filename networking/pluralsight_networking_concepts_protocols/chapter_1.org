@@ -1,0 +1,24 @@
+* What is Networking?
+
+  - Way of electronically moving data/information from one location to another
+    location. 
+  - It is a collection of protocols which are interconnected with each
+    other.
+  - Using a telephone
+    - Vibration in the air
+    - Bridge: Microphone converting air vibration to electical signal
+    - Medium of electrical signal : 2 wires
+    - electrical signal moving the magnet on the sender's side which
+      then vibrates the membrane --> vibration in the air --> sound
+
+* Modeling Systems
+
+  - 4 layers
+    - concept
+      - example : message
+    - language
+      - example : english
+    - link
+      - example : vibration
+    - physical
+      - example : air
