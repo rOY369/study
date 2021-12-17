@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-12-17 Fri 12:09 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Roy Miller" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org9545b65">1. OSI Model</a>
+<ul>
+<li><a href="#org6d0d39c">1.1. Physical Layer</a></li>
+<li><a href="#org552e453">1.2. Data Link Layer</a></li>
+<li><a href="#org782e9bc">1.3. Network Layer</a></li>
+<li><a href="#org506049e">1.4. Transport Layer</a></li>
+<li><a href="#org701ecbc">1.5. Application Layer</a></li>
+<li><a href="#org28ef74e">1.6. Presentation Layer</a></li>
+<li><a href="#org470daf2">1.7. Session Layer</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9545b65" class="outline-2">
+<h2 id="org9545b65"><span class="section-number-2">1</span> OSI Model</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>Open Systems Interconnect</li>
+<li>Watching youtube video
+<ul class="org-ul">
+<li>My system : wireless router through WiFi / LAN : ISP(Modem) :
+Internet : Youtube Server</li>
+<li>Type in <a href="https://www.youtube.com">https://www.youtube.com</a></li>
+<li>Goes to Youtube server &#x2013;&gt; pulls up the video</li>
+<li>Transfers it to my system</li>
+</ul></li>
+</ul>
+
+
+<div class="figure">
+<p><img src="pictures/osi_model.png" alt="osi_model.png" width="400px" height="400px" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6d0d39c" class="outline-3">
+<h3 id="org6d0d39c"><span class="section-number-3">1.1</span> Physical Layer</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>wireless/wired cables (twister pair cables: non-identical)</li>
+<li>modem - internet : CoAx cable</li>
+<li>internet : fiber optics / wireless / copper</li>
+<li>All of these cables and the protocols that define how those
+cables are constructed are physical layer
+protocols. Example : twister pair cabling require a very
+precise protocol to understand how to construct it, same
+thing with other types of cables. Even the wireless
+connections use electronmagnetic spectrum to transfer
+information.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org552e453" class="outline-3">
+<h3 id="org552e453"><span class="section-number-3">1.2</span> Data Link Layer</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>Protocols required to move information from one end of the cable
+to another end of the cable. So we end up having mini-network
+segments (marked as blue in the following picture)</li>
+<li>A network segment is a collection of network devices that operate
+in the same space in the same protocol.</li>
+<li><p>
+In each of the network segments in the picture, a specific
+protocol is used to manage and transfer the data.
+</p>
+
+
+<div class="figure">
+<p><img src="pictures/network_segment.png" alt="network_segment.png" />
+</p>
+</div></li>
+
+<li>Most of the segments in the picture use wired/wireless
+ethernet. For example : computer-router, router-modem,
+internet-server.</li>
+<li>cable modem - isp uses DOCSIS-3 (data over cable service
+interface specification)</li>
+<li>internet is mainly ethernet &#x2013;&gt; extremely high speed
+communication (100Gb/s)</li>
+<li>These protocols are part of data link layer : place where we move
+data from one device to another device in very small short little
+hops.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org782e9bc" class="outline-3">
+<h3 id="org782e9bc"><span class="section-number-3">1.3</span> Network Layer</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>The data link layer is responsible for moving traffic between the
+components of a network segment. For example ethernet within the
+first segment moves information only between the computer and
+router i.e the communication is done only between short hops.</li>
+<li>But we also need communication between different network
+segments. For example computer - cable modem.</li>
+<li>IP Addressing to allow us to send messages along longer distances.
+<ul class="org-ul">
+<li>IP Address is just like a home address. It is a unique address of
+all the devices on the internet.</li>
+</ul></li>
+<li>IP Routing allows us to send messages from one unique address to
+another.</li>
+<li>Ethernet, IP addressing and IP routing work closely together to
+communicate.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org506049e" class="outline-3">
+<h3 id="org506049e"><span class="section-number-3">1.4</span> Transport Layer</h3>
+<div class="outline-text-3" id="text-1-4">
+<ul class="org-ul">
+<li>Before we can ask the server to send us the website information,
+we have to setup some kind of session in between the client and
+server. (similar to telephone call)</li>
+<li>TCP Transmission control protocol allows us to build the session.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org701ecbc" class="outline-3">
+<h3 id="org701ecbc"><span class="section-number-3">1.5</span> Application Layer</h3>
+<div class="outline-text-3" id="text-1-5">
+<ul class="org-ul">
+<li>Need a protocol that allows to transfer the website located on
+the server to the web browser located on the client. &#x2013;&gt; HTTP
+(hyper text transfer protocol)</li>
+<li>Web pages are written in format : hyper text (basic formatting of
+a text document to indicate instructions on how to present info
+in a web browser)</li>
+<li>transfer to hyper text file using HTTP protocol</li>
+<li>HTTP is an application layer protocol</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org28ef74e" class="outline-3">
+<h3 id="org28ef74e"><span class="section-number-3">1.6</span> Presentation Layer</h3>
+<div class="outline-text-3" id="text-1-6">
+
+<div class="figure">
+<p><img src="pictures/osi_model_all_layers.png" alt="osi_model_all_layers.png" />
+</p>
+</div>
+
+<ul class="org-ul">
+<li>ASCII for encoding text</li>
+<li>EBCDIC used by IBM for encoding text</li>
+<li>some protocol needed to convert both data format</li>
+<li>Antiquated Layer</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org470daf2" class="outline-3">
+<h3 id="org470daf2"><span class="section-number-3">1.7</span> Session Layer</h3>
+<div class="outline-text-3" id="text-1-7">
+<ul class="org-ul">
+<li>also antiquated layer</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Roy Miller</p>
+<p class="date">Created: 2021-12-17 Fri 12:09</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
