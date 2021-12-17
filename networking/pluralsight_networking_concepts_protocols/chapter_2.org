@@ -9,6 +9,7 @@
     - Transfers it to my system
 
 #+ATTR_HTML: :width 400px :height 400px
+#+ATTR_ORG: :width 400px :height 400px
 [[file:pictures/osi_model.png]]
       
 ** Physical Layer
