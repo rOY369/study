@@ -8,8 +8,7 @@
     - Goes to Youtube server --> pulls up the video
     - Transfers it to my system
 
-#+ATTR_HTML: :width 50% : height 50%
-#+ATTR_ORG: :width 50 : height 50
+#+ATTR_HTML: :width 50px : height 50px
 [[file:pictures/osi_model.png]]
       
 ** Physical Layer
