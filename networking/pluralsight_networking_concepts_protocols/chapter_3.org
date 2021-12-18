@@ -1,0 +1,46 @@
+* Protocols and Port Numbers
+
+  - Mainly this is about the application layer protocols.
+  
+** HTTP / HTTPS
+
+   [[file:pictures/http.png
+]]
+   - HTTPs : Hyper text transfer protocol secure : encrypted transfer
+     meaning all the data communicated between client and server is
+     encrypted.
+   - Nearly all application protocols require the client-server model.
+   - It is sending a file in format of hyper text : way of formatting
+     a document readable by web browser.
+   - Mechanism on client side : web clients (browser)
+   - Mechanism on server side : server software like apache, nginx
+     etc. in order to host a website on the internet.
+   - client and server work in conjunction with each other to transfer
+     the hyper text documents in order to get the website from server
+     to client.
+   - Every layer 7 (application) protocol has a layer 4 (transport)
+     component which is port number. Port number uniquely identifies
+     the layer 7 protocol being used at layer 4. We can thus use these
+     port numbers to easily identify traffic at layer 4 so that the
+     computing systems understand how to interpret the traffic and
+     what layer 7 protocol to send the particular message to.
+   - HTTP : default port = 80
+   - HTTPs : default port = 443
+** File Transfer Protocol 
+
+   - We can transfer a file from client --> server or server -->
+     client.
+   - FTP, sFTP (secure) , TFTP (trivial file transfer protocol)
+   - TFTP
+     - meant for sending tiny files
+     - having simple setups to transfer files quickly without auth or
+       issues with firewalls
+   - FTP, sFTP typically require username and password but TFTP does not.
+   - sFTP is going to encrypt the traffic
+   - FTP : default port = 20 (transfer), 21(auth)
+   - sFTP : default port = 22
+     - 22 is port number for another protocol called ssh (secure shell)
+     - we take the ftp protocol inside the ssh session which allows us
+       to encrypt the traffic
+   - TFTP : default port = 69
+   - SMB : server message block : default port = 445
