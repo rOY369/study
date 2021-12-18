@@ -4,8 +4,8 @@
   
 ** HTTP / HTTPS
 
-   [[file:pictures/http.png
-]]
+   [[file:pictures/http.png]]
+
    - HTTPs : Hyper text transfer protocol secure : encrypted transfer
      meaning all the data communicated between client and server is
      encrypted.
