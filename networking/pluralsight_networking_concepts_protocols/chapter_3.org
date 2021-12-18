@@ -44,3 +44,7 @@
        to encrypt the traffic
    - TFTP : default port = 69
    - SMB : server message block : default port = 445
+     - example : mounting of some type of network drive on a system
+       which allows you to add files to the server or copy files from
+       the server.
+     -  
