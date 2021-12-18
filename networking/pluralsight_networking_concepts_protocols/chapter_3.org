@@ -47,4 +47,147 @@
      - example : mounting of some type of network drive on a system
        which allows you to add files to the server or copy files from
        the server.
-     -  
+** POP3, IMAP and SMTP
+
+   - These protocols are used to transfer files in the format of email
+     document.
+   - POP3 (post office protocol) and IMAP (Internet message access
+     protocol) are used by the client machine for receiving the 
+     email from a gmail or custom email server.
+     - POP3 unencrypted default port : 110
+     - POP3 encrypted default port : 995
+     - IMAP unencrypted default port : 143
+     - IMAP encrypted default port : 993
+   - SMTP (simple mail transfer protocol) takes a message created on
+     the client's email application and uses SMTP to transfer that
+     message to the SMTP server which then forwards the message to the
+     corresponding destination.
+     - unencrypted default port : 25
+     - encrypted default port : 465
+     - 587 is sometimes used for encrypted SMTP traffic
+** Authentication : LDAP and LDAPs
+
+   - Lightweight directory access protocol
+   - enterprise organisation : use this protocol to communicate with
+     the server to authenticate you to the network, bring down all
+     your map network drives and get your settings.
+   - client : microsoft 10, server : microsoft's active directory
+     which is part of them server line products
+   - It allows to automatically push policies and configure windows
+     clients from that central server.
+   - client : username,password --> tihs is sent to server and
+     authenticates it and LDAP will send a token back to client saying
+     that yes this user is authenticated for network access.
+   - LDAP : default port = 389
+   - LDAPs : default port = 636
+
+** Network Services
+*** DHCP
+
+    - lets talk about cases where we are not transferring files,
+      rather we are transferring data or little bits of information
+      that allow the network to work properly.
+    - DHCP : Dynamic host configuration protocol
+    - the DHCP server acts as a wireless access point which connects
+      the network or all of the devices to the cable modem router,
+      dsl router or satellite router.
+    - Whenever a new device tries to plug into a network, the DHCP
+      server automaticaly assigns IP address to the device.
+    - The device sends a message to the DHCP server saying that it does
+      not have an IP address. The server will then respond with the
+      following information :
+      - IP address
+      - Subnet mask
+      - Default gateway
+      - DNS server
+      - other info required to automatically configure the device
+    - This way the DHCP server tells the device the required info how
+      to connect to the network and allow access to the resources it needs.
+    - This IP address assigned by DHCP is somewhat temporary meaning we
+      can release it and ask the DHCP server to reassign an IP
+      address. While reassigning, it might give us the old IP address
+      or a new one.
+   
+*** DNS 
+    [[file:pictures/dns.png]]
+
+    - Domain name system
+    - it allows us to use simple names to connect to devices on the
+      internet
+    - www.google.com
+    - The DNS client in the workstation sends a message to the DNS
+      server (which is configured in our workstation) asking what is
+      the ip of google.com
+    - The DNS server then (8.8.8.8) responds with the ip of google.com
+    - The workstation then will be able to ask the google server (ip
+      which was sent from the DNS server) the website. The website
+      will be sent to the workstation.
+    - Before we go to website, we first make a detour to DNS server to
+      find out what the ip address is of that particular server. Every
+      server must have a public ip address or we won't be able to
+      communicate with it.
+    - nslookup command to look up the names on the dns server and
+      return the ip address. 
+
+**** TODO systemd-resolved.service
+
+** Network Time Protocol
+
+   - We use NTP server in a network to automatically configure all of
+     the times on our clients to be exactly the same.
+   - client on the network is usually configured with NTP right in the
+     operating system, asks the NTP server what time is it.
+   - The NTP server replies with the time.
+   - The time is coordinated universal time --> UTC (prime meridian
+     timezone --> passing through greenwich london)
+
+** Network Management : Telnet and SSH(secure shell)
+
+   - telnet is clear text. default port = 23
+   - ssh is encrypted. used for accessing devices remotely. also
+     something like a mechanism to encrypt FTP traffic. default port =
+     22  
+   - a network admin might want to use ssh to access
+     router/server/firewall/switch etc.
+   - PuTTY is a ssh/telnet client
+
+** Network Management : SNMP
+
+   [[file:pictures/snmp.png]]
+
+   - simple network management protocol
+   - snmp server collects information about snmp clients or agents
+   - snmp server sends out a message to all the clients to walk the
+     tree - hey device, tell me everything there is to know about you
+     in snmp land.
+     - this could include the statuses of ports, is the interface up
+       or down. what is the process utilisation ? what is temperature
+       ? are there any issues or any log messages that are important.
+   - the clients report back with the corresponding info asking the
+     server to add in its snmp database
+   - network admin can then browse the snmp server and view graphs and
+     statistics about the performance of the devices on the network.
+   - if any of the device has an issue, it can send something called
+     snmp trap to the snmp server which then allows the snmp server to
+     add it to the database or maybe send out an alert to the network
+     admin.
+
+** Network admin : RDP (remote desktop protocol)
+   
+   [[file:pictures/rdp.png]]
+
+   - default port = 3389
+
+** Audiovisual protocols
+
+   [[file:pictures/h323.png]]
+
+   - H.323 : default port = 1720 / 1721
+     - used for audiovisual communication typically used in an
+       application like videoconferencing.
+   - SIP : session initiation protocol , default protocol = 5060 / 5061
+     - voice over IP
+     - used to set up a voice call between phone and server, sometimes
+       the server and telephone company
+
+   
