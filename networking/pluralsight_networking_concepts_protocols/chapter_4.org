@@ -60,6 +60,8 @@
    #+RESULTS:
    [[file:./pictures/tcp_handshake.png]]
 
+   [[file:./pictures/tcp_handshake.png]]
+
    
 
    - layer 4 i.e tcp used to establish the session
@@ -98,8 +100,8 @@
 
    #+RESULTS:
    [[file:./pictures/tcp_graceful_disconnect.png]]
-
-
+   [[file:./pictures/tcp_graceful_disconnect.png]]
+   
 *** Ungraceful Disconnection
 
     Similar to hanging up the phone
@@ -119,6 +121,10 @@
      note right of server: Connection closed
  
    #+end_src
+
+   #+RESULTS:
+   [[file:./pictures/tcp_ungraceful_disconnect.png]]
+   [[file:./pictures/tcp_ungraceful_disconnect.png]]
     
 
    There may be some device between the pc and server, maybe some kind
