@@ -1,0 +1,22 @@
+* TCP
+
+  - Transmission control protocol
+  - This is layer-4 protocol
+  - Example of transferring website from server --> client
+    - telephone conversation protocol
+    - For this, we have to establish a session between server and
+      client. This will be specialised connection session which forms
+      the base mechanism for any further transfer of data.
+    - Both client and server throughout the session, give clues to
+      each other whether they are receiving messages from other the
+      other party. It also includes a protocol for ending the
+      session. 
+    - [[file:./pictures/tcp_intro_1.png]]
+    - [[file:./pictures/tcp_intro_2.png]]
+    - [[file:./pictures/tcp_intro_3.png]]
+    - [[file:./pictures/tcp_intro_4.png]]
+    - [[file:./pictures/tcp_intro_5.png]]
+  - Summary
+    - Specialised process to esaablish the session
+    - ways of acknowledging that information was received or not
+    - way of tearing down the session - gracefully or ungracefully
