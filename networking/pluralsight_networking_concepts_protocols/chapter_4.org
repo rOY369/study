@@ -1,5 +1,5 @@
 * TCP
-
+** Introduction
   - Transmission control protocol
   - This is layer-4 protocol
   - Example of transferring website from server --> client
@@ -20,3 +20,161 @@
     - Specialised process to esaablish the session
     - ways of acknowledging that information was received or not
     - way of tearing down the session - gracefully or ungracefully
+
+** 3-Way Handshake
+
+   #+begin_src plantuml :file ./pictures/tcp_handshake.png
+     title tcp_handshake
+
+
+     participant pc_client
+     participant server
+
+     autonumber
+
+     note left of pc_client: I have server's ip address
+
+     pc_client -> server: SYN 
+
+     note right of pc_client: sent synchronised message, waiting for reply from server
+
+     note right of server: received SYN
+
+     server --> pc_client: SYN-ACK 
+
+     pc_client --> server: ACK
+
+     note right: Connection Established b/w client and server
+     note right: Layer 4 protocol complete
+
+     autonumber stop
+
+     note right: Using layer 7 protocol i.e HTTP to ask for website
+
+     pc_client -> server: [HTTP] Send me website
+     server --> pc_client: [HTTP] Website
+
+
+   #+end_src
+
+   #+RESULTS:
+   [[file:./pictures/tcp_handshake.png]]
+
+   
+
+   - layer 4 i.e tcp used to establish the session
+   - layer 7 i.e HTTP used to transfer the website
+     - If there is an incomplete transfer of information, both client
+       and server can also ask each other for any kind of missing
+       information.
+
+** 4-Way Disconnect
+
+
+*** Graceful Disconnection
+
+   #+begin_src plantuml :file ./pictures/tcp_graceful_disconnect.png
+     title tcp_graceful_disconnect
+
+
+     participant pc_client
+     participant server
+
+     autonumber
+
+     note right of server: I want to close the connection i.e no longer receive any HTTP requests from client. 
+
+     server -> pc_client: FIN 
+     pc_client --> server: FIN-ACK
+
+     pc_client --> server: FIN
+     server -> pc_client: FIN-ACK
+
+     note right: Connection closed
+ 
+     autonumber stop
+
+   #+end_src
+
+   #+RESULTS:
+   [[file:./pictures/tcp_graceful_disconnect.png]]
+
+
+*** Ungraceful Disconnection
+
+    Similar to hanging up the phone
+
+   #+begin_src plantuml :file ./pictures/tcp_ungraceful_disconnect.png
+     title tcp_ungraceful_disconnect
+
+
+     participant pc_client
+     participant server
+
+     autonumber
+
+     note right of server: This conversation isn't right, I want to close this connection immediately.
+
+     server -> pc_client: RST
+     note right of server: Connection closed
+ 
+   #+end_src
+    
+
+   There may be some device between the pc and server, maybe some kind
+   of firewall that decides that the conversation isn't good and it
+   shuts it down with the reset.
+
+** Summary
+   
+   - A reliable protocol
+   - Has mechanisms built in to verify that the data sent was received
+* UDP
+
+  - User diagram protocol
+  - client wraps up application-layer message like maybe DNS and say
+    "Hey, send me the data"
+  - The server comes back "here is the data"
+  - no session setup
+  - just like opening your front door and shouting out to the world
+    "hey i need some information" and hopefully, one of your
+    neighbours will open their door and shout back "hey i have your
+    information".
+  - not like using phone call at all, more like using a walkie-talkie
+    system, where we send a msg out maybe we address it to a certain
+    person.
+  - No reliable communication, the msg sent may or may not be received
+    by the server unlike tcp where sequence numbers and acknowledgment
+    numbers are used to verify that the data sent was received.
+  - very efficient for small data transfers
+  - For a application level protocol like DNS, it is just a simple
+    message that we send to the server - "hey dns server, what is the
+    ip address of google.com" --> this can be easily be sent in one
+    single msg over udp. the server can reply back "yeah, google is at
+    8.8.8.8"
+  - UDP keeps this process short and sweet
+* Transport Layer Addressing
+
+
+  - At the transport layer, port numbers are used to identify the
+    application layer protocol.
+  - In TCP and UDP, there are always a source port number and
+    destination port number in our segment header.
+  - Categorization of port numbers
+  - Server
+    - Well known : 0-1023
+      - http,https,ftp,ssh,telnet
+    - registered : 1024-49151
+      - custom applications for propreitory protocols
+  - Client
+    - ephemeral port numbers (temporary) : 49152-65535
+  - destination port number in the well known or the registered port
+    number range when we are working with tcp and udp, source port
+    number within the ephemeral range
+  - TCP header same as segment header
+  [[file:./pictures/tcp_addressing_1.png]]
+
+* Application layer protocol dependencies
+
+  [[file:./pictures/protocol_dependencies_1.png]]
+  [[file:./pictures/protocol_dependencies_2.png]]
