@@ -100,6 +100,7 @@
 
    #+RESULTS:
    [[file:./pictures/tcp_graceful_disconnect.png]]
+
    [[file:./pictures/tcp_graceful_disconnect.png]]
    
 *** Ungraceful Disconnection
@@ -124,6 +125,7 @@
 
    #+RESULTS:
    [[file:./pictures/tcp_ungraceful_disconnect.png]]
+
    [[file:./pictures/tcp_ungraceful_disconnect.png]]
     
 
