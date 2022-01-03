@@ -1,7 +1,7 @@
 * Network Layer / IP Addressing
 
 ** IP Address
-
+   
 *** Basic 
 
    - IP Addressing works in the layer 3 network layer.
@@ -38,7 +38,7 @@
       - first 24 bits represent network portion
       - very last octet will be host portion
       - The division line can be anywhere within the address
-      - [[file:/pictures/subnet_mask_2.png]]
+      - [[file:./pictures/subnet_mask_2.png]]
       - [[file:./pictures/subnet_mask_3.png]]
     - Classful addressing (before 2000)
       - [[file:./pictures/ip_classes.png]]
