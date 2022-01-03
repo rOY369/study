@@ -132,3 +132,4 @@
       - 10.0.10.0/24 is a range of addresses that falls within the
         10.0.0.0/8 grouping.
       - [[file:./pictures/subnetting.png]]
+      - [[file:./pictures/vlsm.png]]
