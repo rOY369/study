@@ -1,0 +1,134 @@
+* Network Layer / IP Addressing
+
+** IP Address
+
+*** Basic 
+
+   - IP Addressing works in the layer 3 network layer.
+   - The network layer needs to be able to move traffic from one
+     device on internet to some other device.
+   - every device connected on the internet must have a unique
+     identifier at layer three.
+   - IP address is 4 numbers
+     - each number within the range 0-255
+     - 203.0.113.10
+     - [[file:./pictures/ip_address_components.png]]
+     - Network portion same as zip code representing the geographical area
+       - tells us what larger group of ip addresses, this specific ip
+         address is a part of.  
+     - Host portion same as home address like house no.
+       - what device we are working with in a larger group of network
+
+    
+*** Construction
+
+    - Ip address is a 32 bit value broken into 4 octets
+    - [[file:./pictures/ip_address_construction.png]]
+    - Which is the network and host portion is decided why which type
+      of addressing is used.
+*** Classful and Classless Addressing
+
+    - Classless addressing (after 2000)
+      - subnet mask is going to determine the network portion and host
+        portion of the address
+      - subnet mask combined with the ip address will very quickly
+        tell the division line between the network portion and host
+        portion of the ip address.
+      - [[file:./pictures/subnet_mask.png]]
+      - first 24 bits represent network portion
+      - very last octet will be host portion
+      - The division line can be anywhere within the address
+      - [[file:/pictures/subnet_mask_2.png]]
+      - [[file:./pictures/subnet_mask_3.png]]
+    - Classful addressing (before 2000)
+      - [[file:./pictures/ip_classes.png]]
+      - initially, ip addressing was not designed to use a subnet mask.
+      - the class of the address was used to determine which portion
+        is network portion and which portion is host.
+      - Unicast is class A,B,C. --> the only usable addresses we have
+        on the public internet range b/w 0.0.0.0 and 223.255.255.255
+      - Unicast communication is when we have one single device trying
+        to talk to another single device on the internet.
+      - Class D is multicast means we can talk from one device to many
+        devices. This is not supported on public internet, however
+        supported within enterprise organisations to do things like
+        live video streaming.
+      - everything on public internet is unicast even netflix streaming.
+      - [[file:./pictures/class_a.png]]
+      - [[file:./pictures/class_b.png]]
+      - [[file:./pictures/class_c.png]]
+      - [[file:./pictures/class_d.png]]
+      - class e is experimental
+*** IP Address Types
+
+
+    - Network address/prefix : identifier for a group of devices : a
+      set of ip addresses 
+    - Broadcast address : identifier for all devices on a network : as
+      an address that can be used to send a message to all the devices
+      of the network at once.
+    - Host address : uniquely identifies a device on the network
+    - Network address
+      - Subnet mask + ip address --> we can identify the network address.
+      - If all 0's in the host portion, then the address is a network
+        address and only a network address.
+    - Broadcast address
+      - If all 1's in the host portion, then the address is a
+        broadcast address
+    - Host address
+      - If neither all 1's nor all 0's in the host portion
+
+*** CIDR (Classless Inter Domain Routing)
+
+    - framework of representing network prefix
+    - count number of bits in the network portion
+    - [[file:./pictures/cidr_notation.png]]
+    - example
+      - 203.0.113.10 with mask 255.255.255.0
+      - length of network portion = 24
+      - cidr notation = 203.0.113.10/24
+    - IPv6 addresses are all written in cidr notation
+
+*** Private IP Address Ranges
+
+    - Some addresses are preserved for private use, not usable on
+      public internet.
+    - [[file:./pictures/private_ip_address_range.png]]
+    - These are not routable on public internet
+    - APIPA address : automatic private ip addressing
+      - 169.254.0.0/16
+      - don't often work
+      - means something wrong in the network
+      - device is not getting correct ip address
+    - 127.0.0.1 = loopback address
+      - used to test the IP stack or TCP/IP stack on the operating
+        system is working correctly
+    - Gateway and router are same thing
+    - In order for 2 devices to communicate, they must be on the same
+      IP network i.e with same network portion.
+    - If they are not on the same network, we need to add another
+      device like a router to facilitate that communication.
+ 
+*** IP Address subnetting
+
+    - Network address is the very first address in our range of
+      addresses.
+    - Broadcast address is the very last address in a range of
+      addresses.
+    - 10.0.0.0/8 = private ip address
+      - first 8 bits = network portion
+      - then 24 bits = host portion = 16 million devices
+      - we want a smalled ip address range
+      - another representation : 10.0.0.0/8 with subnet mask 255.0.0.0
+      - range of addresses : 10.0.0.0(network address) -
+        10.255.255.255(broadcast address)
+      - 10.0.10.0 is a host address on the 10.0.0.0/8 network
+        - we can move the subnet from /8 to /24
+        - first 24 bits = network portion
+        - then 8 bits = host portion
+        - 10.0.10.0/24
+        - network address = 10.0.10.0
+        - broadcast address = 10.0.10.255
+      - 10.0.10.0/24 is a range of addresses that falls within the
+        10.0.0.0/8 grouping.
+      - [[file:./pictures/subnetting.png]]
