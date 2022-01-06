@@ -1,0 +1,109 @@
+* Connecting Switches
+
+  - Switch increases the size of our broadcast domain
+  - Following is a layer 2 switch
+  - When a switch receives a broadcast message, it forwards that
+    message to all other switch ports that are currently active.
+  - [[file:./pictures/switch.png]]
+  - Connecting two switches together, top switch will forward all the
+    broadcast messages with all F's in the mac address field including
+    the other bottom switch.
+  - When the bottom switch receives the message, it will forward it to
+    other devices as well except the interface on which the message
+    was received.
+  - [[file:./pictures/2_switches.png]]
+  - spanning tree loop
+    - [[file:./pictures/spanning_tree_loop.png]]
+    - broadcast storm : the broadcast messages stuck between the two switches and keep
+      circling in a loop
+    - over time this causes high network traffic
+    - spanning tree protocol is enabled by enterprise switches to
+      solve this problem
+    - The switch figures out which ports are redundant and they shut
+      one of them down so now we use only one connection between the switches.
+    - STP shuts down the redundancy and avoids these loops from
+      occurring.
+    - STP will figure out which port to shut down in a case of any
+      number of switches.
+
+* VLANS
+  
+  - LAN is a group of devices connected together with an ethernet
+    switch.
+  - The broadcast domain is the set of devices that can receive a
+    message with all F's in the destination MAC address field.
+  - [[file:./pictures/broadcast_domain.png]]
+  - lets create two separate broadcast domains
+  - [[file:./pictures/separate_broadcast_domains.png]]
+  - Each broadcast domain receives its own unique layer 3 network.
+  - Left domain - VLAN1
+  - Right domain - VLAN2
+  - We can combine these two switches together into one single
+         physical switch.
+  - The VLANS now exhibit the same properties that it did when we had
+    connected to two different switches.
+  - So If we send a broadcast message out from a device in VLAN 1, it
+    only goes to other devices in VLAN 1. Same with VLAN2. 
+  - The way that this is configured is that each one of the
+    switchports has a number assigned to it, and through some
+    configuration tool we assign each switchport to a specific VLAN so
+    all the switch ports on the left will be configured with VLAN1 and
+    all switch ports on the right will be configured with VLAN2.
+  - What application do I have for this?
+    - data center, where we have lots and lots of servers and each for
+      different purposes.
+    - some servers need to access the public internet, others only
+      need to access internal resources, some of them don't need to be
+      so secure. The way we set the entire network is that we segment
+      our data center into specific networks for specific
+      purposes. This allows us to have a very organized network.
+    - Typically upto 4000 VLANS on a single switch. but we may not
+      have 4000 ports on that switch.
+  - We can do something special to enable communication b/w the two
+    VLANS.
+    - [[file:./pictures/trunk_link.png]]
+    - Trunk link is a special kind of link specifically designed to
+      connect switches together that are using VLANs
+    - If we wish to send a message from 172.16.0.55/24 on VLAN2
+      connected on left switch to 172.16.0.66 connected on right
+      switch, we need to be able to get that message over to the
+      second switch without the devices on VLAN1 hearing that
+      converation.
+    - When the message arrives at the trunk link interface, additional
+      information is added to the frame header. So the frame header
+      contains the source MAC address and destination MAC address. At
+      trunk link, it adds an additional information in frame header :
+      the VLAN number from where this particular frame originated. So
+      in this case we add a VLAN tag : VLAN2 in the frame header.
+    - This frame arrives on the other switch port and that is also
+      configured as a trunk link, the tag is removed. The switch
+      learns that the message belongs to VLAN2. The message then gets
+      forwarded to the corresponding device. 
+    - The trunk links, we configure them to be tagged ports and other
+      links are configured as access ports/untagged ports i.e the
+      trunk link ports or tagged ports is going to have tagged traffic
+      where as the untagged ports / access ports are going to have
+      untagged traffic.
+    - [[file:./pictures/untagged_port.png]]
+* Siwtch port mirroring
+
+  - Troubleshooting utility
+  - For example consider an issue in a web client trying to connect to
+    the web server, the server might not be responding in a way that
+    is acceptable by the client
+  - [[file:./pictures/server_issue.png]]
+  - we can connect a PC to one of the ports in the switch and we can
+    configure it to mirror the traffic of any port we want. In this
+    case we mirror the traffic that is heading to and from the server.
+  - [[file:./pictures/port_mirroring.png]]
+  - we can use wireshark to capture, analyse the network traffic
+  - intrusion detection device can be hooked up to the network to a
+    mirrored port --> can run the network traffic through some
+    algorithms to analyze whether the traffic is legitimate and send
+    an appropriate alert.
+
+* PoE (Power over Ethernet)
+
+   [[file:./pictures/PoE.png]]
+
+   Wired Ethernet is 802.3 protocol.

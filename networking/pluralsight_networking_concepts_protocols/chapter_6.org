@@ -1,0 +1,41 @@
+* IPv6 addressing
+
+  - IPv6 Address size
+    - 4 times as long as IPv4
+    - 128 bits => 32 nibbles => 8 hextets
+    - 32 hexadecimal values
+    - 2001:0DB8:0002:008D:0000:0000:00A5:52F5
+    - Network portion : first 64 bits
+    - Interface identifier / host portion : next 64 bits
+    - /64 subnet mask
+    - variable length subnet masking not used typically
+    - How to shorten ?
+      - eliminate leading 0's
+      - replace consecutive 0's with `::`
+      - only one instance of `::` should exist in an IPv6 address
+    - 2^64 number of host addresses available one one IPv6 network out
+      of possible 2^64 IPv6 networks
+  - [[file:./pictures/ipv6_demo.png]]
+  - every single interface in IPv6, if its going to talk on a routed
+    network will require at least 2 IPv6 addresses
+    - global unicast address
+    - link-local address only exists within the layer 2 kind of like
+      mac address. it will never leave out of the local ethernet network.
+  - IPv6 address acquisition
+    - SLAC (stateless address auto configuration)
+    - [[file:./pictures/slac.png]]
+    - router will advertise the network portion of the IPv6 address
+    - Windows system
+      - pick a random 64 bit interface identifier (host portion)
+    - Unix/Linux/Mac
+      - Modified EUI - 64 format
+      - modify mac address to 64 bits long : break the address in half
+        and put FFFE in the middle : beginning of host portion
+      - take the first 8 bits and flip the 7th value
+      - [[file:./pictures/slac_2.png]]
+  - IPv6 DHCP
+    - [[file:./pictures/ipv6_dhcp.png]]
+  - IPv6 Tunneling
+    - [[file:./pictures/ipv6_tunnel.png]]
+    - we communicate with ipv6 internet by putting ipv6 packets inside
+      ipv4 packet. 
