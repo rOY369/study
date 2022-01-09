@@ -1,0 +1,118 @@
+* Basic : what is Ethernet ? 
+
+
+  - Ethernet is layer 2 i.e data link layer protocol.
+  - Ethernet, Frame, Switch == data link protocol 
+  - The data link layer is responsible for protocols that allow
+    traffic to move in between the devices that are locally connected
+    together i.e from one end of cable to other end of cable.
+  - Two unique distinct types of ethernet : wired and wireless
+
+* CSMA/CD
+
+  - Carrier sense multiple access with collision detection
+  - [[file:./pictures/bus_network.png]]
+  - If any device wants to send a message to any of the devices on the
+    network, It will send a pulse of electricity --> +5V or -5v or no
+    volt.
+  - This signal of on and off allows us to transfer a message i.e
+    pulse of 0 and 1.
+  - So if any one of the devices send a message, all the other devices
+    on the network also hear the same message. Only the message it was
+    intended to receive will typically respond.
+  - Here multiple access means all the devices are sharing the same
+    wire.
+  - If any one device is already sending a message, another device
+    will have to wait until the device is done sending its msg.
+  - It is easy to have an accident when both devices listen to the
+    wire and hear that nodody is talking, in that case both devices
+    will start sending the msgs at the same time. Collision occurs.
+  - This will create a pulse of more than 5V.
+  - All devices are designed to recognize this surge.
+  - The network stops the conversation, all devices back off and wait
+    a random period of time and then start listen to wire again if it
+    is ready to send the data.
+  - Carrier sense : devices listening to the wire
+  - Multiple access : devices sharing the same wire
+  - collision detection : if device hears a surge of voltage, network
+    creates a collision, all devices will stop listening, discard
+    anything that they have just received and wait and start over again.
+* Duplex and Speed
+
+  - Half duplex : only one device can communicate at a time
+    - similar to walkie talkie
+  - Full duplex : two devices can communicate at the same time
+    - similar to telephone
+    - collision not possible
+  - Modern collision domain is only going to be a half duplex
+    connection b/w a pc and switch
+* Ethernet Frame
+
+  - Ethernet 2
+  - Frame is the mechanism by which we send data across ethernet
+    network from one device to another.
+  - [[file:./pictures/ethernet_frame.png]]
+  - data(payload):
+    - layer 2 information or some layer 3 information (most likely an
+      IP packet)
+    - data we actually transfer
+    - MTU :maximum transmission unit : 1500 bytes
+  - frame == chunk of data + data link layer header (ethernet header)
+  - ethernet header
+    - layer 2 identifiers specifically tied to a network interface
+      - hardware address
+      - Manufacture ID(first 24 bits) : Serial ID(next 24 bits)
+      - 00:10:D9:D7:52:7A
+      - These mac addresses are burned on to the network interface cards
+      - destination mac address
+      - source mac address
+    - Type : type of data. is it layer 3 data or some other data
+    - FCS : frame check sequence
+      - cyclic redundancy check
+      - sender takes all the information in the frame, runs it through
+        an algo and computes a value and that value is put in the 32
+        bit field at the end of frame called FCS
+      - receiver does the same calculation again and checks whether
+        the FCS value is matching
+  - protocol data unit varies from layer to layer of the OSI model
+    - layer 2 pdu contains the entire frame : source address,
+      destination address, type, fcs and the data itself.
+* Network Topologies
+
+  - Bus
+  - Ring
+    - token ring competitor of ethernet
+    - [[file:./pictures/ring_network.png]]
+    - token spins around a ring
+    - as devices need to transfer data, they will attach data to this token
+    - as another device would the receive the message, it would take
+      the message off the token, put it back on the wire and process
+      will start over again 
+  - Star (modern ethernet)
+    - [[file:./pictures/star_network.png]]
+    - this topology originally came from using hub
+    - this device is a hub : layer 1 device
+    - hub is nothing but a multi-port repeater
+    - when a device puts a message, all the others are going to hear it
+    - If 2 devices send a message at the same time, there will be a
+      collision at the hub
+    - switching takes care of that
+  - layer 2 switch
+    - switch breaks up collision domains
+    - switch maintains a mac address table
+    - it reads the frame headers and save the source mac address in
+      the mac address table corresponding to the port number
+    - it checks from the table which port belongs to the destination
+      mac address and forwards the message only to this port
+    - this creates a virtual circuit inside the switch
+    - now we can have multiple devices talking at the same time
+    - no collisions occur here
+  - Broadcast message
+    - ethernet is considered to be a broadcast network type
+    - [[file:./pictures/ethernet_broadcast.png]]
+    - When the destination mac address of the frame is all F's, the
+      frame is sent out all active interfaces, excpept the receiving
+      interface.
+    - Broadcast domain
+      - group of networked devices which will receive a layer 2
+        broadcast message

@@ -1,0 +1,237 @@
+* OSI Model : Network Layer
+
+  - Network layer is responsible for getting traffic across the
+    network from one LAN to another LAN or from one ethernet segment
+    to another ethernet segment from one VLAN to another VLAN.
+  - So the network layer is responsible for end to end communication
+    i.e from pc to server.
+  - Router : layer 3 device
+  - Modem : Layer 2 bridge converting ethernet to DOCsis
+  - [[file:./pictures/network_layer.png]]
+  - internet : full of routers
+
+* Basic Network
+
+  
+  - [[file:./pictures/basic_network.png]]
+  - Routers by design are always going to have at least 2 interfaces
+    on them i.e at least 2 ports where we connect some cable to build
+    a data link layer connection into the router.
+  - Router is similar to pc in this case. All the network interface
+    cards will be on a unique IP network subnet having all 0s in the
+    host portion. We take this unique IP subnet and individually
+    assign IP addresses directly to each host in our system.
+  - so here the inside of our network is 10.0.0.0/24 and outside of
+    our network is 203.0.113.4/30
+  - Now the devices can communicate with each other and also out to
+    the internet and back again.
+  - IP Packet
+    - Internet protocol does not only specify the IP Addressing
+    - But its also specifying how to construct a header to put the
+      data we are trying to transfer
+    - [[file:./pictures/ip_packet.png]]
+    - TTL : time to live value is to prevent loops in network layer just
+      like spanning tree protocol in layer 2.
+    - TTL = 128 means that the packet will be thrown away after the
+      packet has traversed through 128 routers.
+    - icmp : internet control msg protocol
+    - ICMP is used to ping to send msgs
+    - packet is a word that we specifically use at network layer to
+      designate the header + the data we are carrying at the network layer.
+    - all that information in the packet is put into a layer 2 frame
+      which contains destination, source mac address, layer 3
+      protocol, FCS.
+    - [[file:./pictures/ip_packet_in_frame.png]]
+  - Ping message sequence diagram from 10.0.0.10 -> 10.0.0.20
+
+   #+begin_src plantuml :file ./pictures/ping_sequence_diagram.png
+
+     title ping_sequence_diagram
+
+
+
+     participant "10.0.0.10/24" as device1
+     participant switch
+     participant "10.0.0.20/24" as device2
+
+     autonumber
+
+     note left of device1: forms IP packet to send ping message
+     note left of device1: destination ip = 10.0.0.20/24\nsource ip = 10.0.0.10/24\nprotocol=ICMP
+
+     note left of device1: puts IP packet in layer 2 frame data header with layer3 protocol=IPv4
+     note left of device1: has to get destination mac address using ARP protocol
+
+     note left of device1: layer 2 frame to send ARP message
+     note left of device1: arp packet includes\ndestination mac address = FF:FF:FF:FF:FF:FF\nlayer 2 protocol = ARP\ndata=who has this ip?
+
+     device1 -> switch: broadcasts ARP message
+     switch -> device2: receives ARP message, wants to respond with yes I have this IP
+     device2 --> device1: responds back with mac address in the payload
+
+     note left of device1: pulls the mac address out of the payload
+     note left of device1 : completes the IP packet
+
+     device1 -> switch : sends frame
+     switch -> device2 : forwards it to device2
+
+     note right of device2: verifies destination mac address and destionation IP
+     note right of device2: responds back in the same loop
+
+
+   #+end_src
+
+   #+RESULTS:
+   [[file:./pictures/ping_sequence_diagram.png]]
+
+   [[file:./pictures/ping_sequence_diagram.png]]
+
+
+  - ARP: Address resolution protocol
+    - utility that allows us to obtain a layer 2 mac address from a
+      layer 3 ip address
+    - it works between layer 2 and layer 3
+    - devices maintain an arp cache i.e a table containing the mac
+      address corresponding to the ip address. The entry stays for
+      only 90 seconds.
+    - arp table exists on devices that have both a layer 2 and layer 3 address.
+    - mac address table is a pure layer 2 table
+    - arp table is bridge b/w layer 2 and layer 3.
+* Default Gateway
+
+  - Default Gateway is same as default router
+  - It is the place where PC sends traffic to when it does not know
+    how to reach the destination network
+  - [[file:./pictures/default_gateway_network.png]]
+  - lets suppose we want to send a msg from 10.0.0.10/24 to
+    192.168.10.8/24
+  - routers explicitly throw away any broadcast message at
+    layer 2. Router will recieve and process a layer 2 broadcast
+    message but it will not forward that message on.
+  - We can only ARP the devices in our local area network that are on
+    the same subnet.
+  - We only need to send the packet over to the router.
+  - So we ARP our default gateway to get the destination mac address
+    i.e the router.
+  - router maintains an ip route table which contains the information
+    about which port/interface has which network address.
+
+   #+begin_src plantuml :file ./pictures/ping_to_another_network.png
+
+     title ping_sequence_diagram
+
+     participant "10.0.0.10/24" as device1
+     participant switch
+
+     box router
+	   participant "10.0.0.1/24" as router1
+	   participant "192.168.10.1/24" as router2
+     end box
+     participant "192.168.10.8/24" as device2
+
+     autonumber
+
+     note left of device1: forms IP packet to send ping message
+     note left of device1: destination ip = 192.168.10.8\nsource ip = 10.0.0.10\nprotocol=ICMP
+
+     note left of device1: puts IP packet in layer 2 frame data header with layer3 protocol=IPv4
+     note left of device1: has to get destination mac address using ARP protocol
+
+     note left of device1: layer 2 frame to send ARP message
+     note left of device1: arp packet includes\ndestination mac address = FF:FF:FF:FF:FF:FF\nlayer 2 protocol = ARP\ndata=who has the default gateway IP?
+
+     device1 -> switch: broadcasts ARP message
+     switch -> router1: receives ARP message, wants to respond with yes I have this IP
+     router1 --> device1: responds back with mac address in the payload
+
+     note left of device1: pulls the mac address out of the payload
+     note left of device1 : completes the IP packet
+
+     device1 -> switch : sends frame
+     switch -> router1 : forwards it to router1
+
+     note over router1: Pulls out the IP packet, how do I reach 192.168.10.8
+     note over router1: Checks routing table
+
+     router1 -> router1: ttl value - 1 from the IP packet
+     note over router2: puts IP packet in layer 2 frame
+     note over router2: acquires destination mac address of 192.168.10.8 via ARP
+
+     router2 -> device2: sends the IP packet
+
+     note right of device2: verifies destination mac address and destionation IP
+     note right of device2: responds back in the same loop
+
+
+   #+end_src
+
+   #+RESULTS:
+   [[file:./pictures/ping_to_another_network.png]]
+
+  - default router purpose is to get traffic that is destined for a
+    network that is not local network.
+  - We do this is by getting the mac address of our router's default
+    gateway IP address, and send the IP packet with destination mac
+    address as the default router's mac address.
+  - That way we can carry any packet we want over to the router.
+  - The router can look at the destination IP adress and route the
+    messages accordingly.
+  - layer 2 switch maintains a mac address table to select which port
+    to send the message to
+  - layer 3 router maintains a routing table to select which interface
+    to use to reach individual unique networks.
+  
+* IP Routing
+
+  - layer 3 is for the long haul from source IP address to destination
+    IP address.
+  - layer 2 is for the short haul for moving messages.
+  - [[file:./pictures/ip_routing_network.png]]
+  - When I configure IP address on an interface, and then the
+    interface on a router moves to an up state which means we connect
+    a cable into it and the other device, both negotiate a layer 1 and
+    layer 2 connection --> interface goes to an up state. Layer 3
+    network configured on that interface is added to the routing table.
+  - [[file:./pictures/routing_table.png]]
+  - With the above routing tables, the packet from 10.0.0.10 to
+    192.168.10.8 will get thrown away in the router A itself.
+  - So we need to add routes to each one of the routers so that each
+    router knows how to reach all the available networks in the system.
+  - Total of 4 networks in the system.
+  - [[file:./pictures/complete_routing_table.png]]
+  - Now we will be able to send the message.
+  - There are many ways to configure routing tables.
+  - This principle applies exactly for IPv6 routing 
+* Advanced IP Routing
+
+  - Internet itself has paths to different networks in all different
+    kinds of ways.
+  - [[file:./pictures/internet_routing.png]]
+  - Inside the internet cloud, there is a whole bunch of routers in
+    there.
+  - In order to get that routing to work, we have to configure those
+    routes somehow. We have to get those routers to learn how to
+    propogate traffic to the next device.
+  - Static routing : manual static route on each router to determine
+    the next hop for the traffic
+  - Dynamic routing: automated. configure something called a routing
+    protocol.
+    - protocol determines the best path to each destination network.
+    - should there be a redundant link in the routing design, dynamic
+      routing will automatically recalculate the best path.
+    - just like GPS helps in rerouting my car, if there is a backup of
+      traffic, if there is road closure
+    - protocols
+      - RIP : Routing information protocol : one of the oldest. not
+        used at all anymore.
+      - EIGRP : Enhanced interior gateway routing protocol : by CISCO systems
+      - OSPF : open shortest path first : similar to EIGRP in
+        function.
+      - Border gateway protocol : primary routing protocol used on
+        internet. exterior gateway routing protocol. it allows ISP to
+        create business contracts with each other and then implement a
+        routing plan. When ISP connect with one another, they need
+        some way of determining how they are going to charge each
+        other for the traffic traversing the link in between the 2
+        isps. BGP is the utility that allows us to control which
+        traffic gets sent to which link to which ISP
