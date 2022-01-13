@@ -1,0 +1,111 @@
+* Network Address Translation
+
+  - [[file:./pictures/private_ip_address_range.png]]
+  - Class of the IP address range determines the network/host portion.
+  - We can not use these to access the public internet.
+  - For that, we use public IP address.
+  - [[file:./pictures/nat_network.png]]
+  - Lets assume we try to access a website and the web server receives
+    our request.
+  - In the response packet, the packet header has source IP address =
+    52.24.195.195 and destination IP address = 10.0.0.10
+  - But internet does now know how to route the private IP address
+    10.0.0.10. This packet gets thrown away.
+  - This is exactly why we need NAT
+  - Lets start from the beginning
+    - First IP packet will have source address = 10.0.0.10 and
+      destination IP address = 52.24.195.195
+    - As this packet reaches the router, it replaces the source IP
+      address temporarily with its private address which is
+      203.0.113.6/30
+    - it will reach pluralsight and the response packet now is routed
+      to 203.0.113.6/30 which is a public internet routable address
+    - As this reaches the router, it consults the NAT table and put
+      back the 10.0.0.10 in the destination address.
+  - This specific type of NAT is port address translation which uses a
+    combination of both layer 3 and layer 4 addresses i.e ip address
+    and port numbers to keep track of lots of unique conversations.
+ 
+** Port Forwarding
+
+   - This is another component of NAT
+   - In order for a device out on the internet to communicate with a
+     device in the internal network, we have to explicitly configure
+     our router to forward traffic from specific source sockets to
+     specific destination sockets.
+   - A socket is nothing more but IP address + a transport layer port
+     number
+   - [[file:./pictures/port_forwarding.png]]
+   - The router is explicitly configured to forward any packet with
+     destination socket = 203.0.113.6:9293 to 10.0.0.10:9293
+* Dynamic Host Configuration Protocol
+
+  - DHCP is used to configure the IP addresses of the devices.
+  - DHCP is configure to hand out an IP address, subnet mask, default
+    gateway and dns server to all the devices.
+  - The workstation sends out a msg i.e a discover msg saying that I
+    am device in the network and I need an IP address
+  - DHCP server makes an offer and say here is your ip address,
+    default gateway and dns server.
+  - The router then binds the IP address to mac address in the DHCP
+    binding so that it can hand out unique IP addresses.
+  - [[file:./pictures/dhcp.png]]
+  - For static IP address we need to reserve the IP address by
+    manually recording an entry in the router DHCP binding.
+  - DHCP lease : devices get the IP address only temporarily. default
+    lease time is 7 days. Half of that time, the device asks the DHCP
+    server for an IP address and renew the lease for next 7 days.
+  - With larger segments, we configure an IP helper address in the
+    router. This IP helper address is forwarded the DHCP broadcast
+    request whenever the first time discover msg is received by the router.
+  - DHCP discover msg is a broadcast msg with all F's in the
+    destination MAC address.
+  - [[file:./pictures.dhcp_far_network.png]]
+* DNS Hierarchy URL (Uniform Resource Locator)
+
+  - URL is used to create a hierarchy in the domain name system
+  - hierarchial scheme of servers
+  - top level domain is the type of website
+  - [[file:./pictures/top_level_domain.png]]
+  - second level domain is the company name
+  - [[file:./pictures/second_level_domain.png]]
+  - third level domain is the hostname of a specific device. for
+    example www refers to the world wide web server
+  - third level domain does not have to be server or hostname. it can
+    be a sub domain inside the second level domain
+  - [[file:./pictures/sub_level_domain_url.png]]
+  - the whole idea of url is to give some hierarchy in dns so that we
+    can find an IP address for a specific URL
+  - [[file:./pictures/forward_dns_lookup_1.png]]
+  - [[file:./pictures/forward_dns_lookup_2.png]]
+  - if the google dns server has not chached the url's ip, it will
+    first ask the top level domain servers
+  - the .com top level domain server will have the entry for
+    pluralsight.com authoritative server
+  - then the pluralsight.com authoritative server will have other
+    records that indicate the IP addresses of each specific hostname
+    on that domain.
+  - The google dns server will store the IP in its db temporarily
+* Reverse DNS lookup
+
+  - [[file:./pictures/reverse_dns_lookup_1.png]]
+  - [[file:./pictures/reverse_dns_lookup_2.png]]
+  - DNS record types in order to keep track of a url to IP mapping.
+  - [[file:./pictures/dns_record_types.png]]
+  - CNAME : Canonical name record : whenever we see a request for
+    www.pluralsight.com change the request to another domain
+    name. alias for name.
+  - MX - used by mail servers in order to figure out how to route
+    email
+  - NS identifies authoritative name server. used by top level domain
+    servers.
+  - PTR: similar to cname. but doesnt automatically do the lookup for
+    the client. we go to a website and we get the dns response back
+    that we need to go to another url instead
+  - SRV - Service record. this is going to point to a specific layer 4
+    or layer 7 service
+  - TXT - miscellaneous.
+  
+* internal vs external dns
+
+  - [[file:./pictures/internal_dns.png]]
