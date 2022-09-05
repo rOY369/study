@@ -1,0 +1,4 @@
+* Standard Libraries/Features
+
+  - [[https://docs.python.org/3/library/string.html][String Formatting]]
+
