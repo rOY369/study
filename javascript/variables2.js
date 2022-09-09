@@ -11,42 +11,41 @@
 
 */
 
-var x = 0 ;
-var x = 1 ;
+var x = 0;
+var x = 1;
+y = 0;
+y = 1;
+let z = 0;
+z = "Hi";
+console.log(x, y, z);
 
-y = 0 ;
-y = 1 ;
-
-let z = 0 ;
-z = "Hi" ;
-
-console.log(x,y,z) ;
-
-function f() 
-{
-    a = 1 ;
-    console.log(z) ;
+function f() {
+    a = 1; // Global Scope
+    console.log(z);
 }
+f();
+console.log(a);
 
-f() ;
-console.log(a) ;
-
-function f2()
-{
-    for (var i = 0 ; i <= 4 ; i++) // Function Scope 
+function f2() {
+    for (var i = 0; i <= 4; i++) // Function Scope 
     {
-        console.log(i) ;
-    }
-    
-    console.log(i) ;
-
-    for (let j = 0 ; j <= 4 ; j++) // Block Scope
-    {
-        console.log(j) ;
+        console.log(i);
     }
 
-    console.log(j) ;
+    console.log(i);
+
+    for (let j = 0; j <= 4; j++) // Block Scope
+    {
+        console.log(j);
+    }
+
+    // console.log(j); Gives error
 
 }
+f2();
 
-f2() ;
+function f3() {
+    "use strict"; // Enters strict mode to avoid coding mistakes like not declaring a variable
+    b = 7;
+}
+f3();
