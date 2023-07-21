@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "stdio.h": "c",
+        "limits.h": "c",
+        "functional": "c",
+        "random": "c",
+        "stdlib.h": "c",
+        "string": "c"
+    }
+}
